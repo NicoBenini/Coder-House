@@ -19,6 +19,11 @@ from blogApp.views import (
     ArticuloCreacion,
     ArticuloUpdateView,
     ArticuloDelete,
+    AutorList,
+    AutorDetalle,
+    AutorCreacion,
+    AutorUpdateView,
+    AutorDelete,
     formulario_buscar,
 )
 
@@ -57,4 +62,11 @@ urlpatterns = [
     path("editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
     path("borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
     path("formulario_buscar", formulario_buscar, name="formulario_buscar"),
+    
+    path("autor_list", AutorList.as_view(), name="AutorList"),
+    path("r'(?P<pk>\d+)^$'", AutorDetalle.as_view(), name="AutorDetalle"),
+    path("autor_creacion", AutorCreacion.as_view(), name="AutorCreacion"),
+    path("editar/<pk>", AutorUpdateView.as_view(), name="AutorUpdate"),
+    path("borrar/<pk>", AutorDelete.as_view(), name="AutorDelete"),
+    
 ]

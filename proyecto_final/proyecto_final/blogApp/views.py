@@ -137,7 +137,7 @@ class MyLogout(LogoutView, LoginRequiredMixin):
 
 
 ##########################################################
-# EDITAR - BORAR - ACTUALIZAR
+# EDITAR - BORAR - ACTUALIZAR articulo
 ##########################################################
 class ArticuloList(ListView, LoginRequiredMixin):
     model = Articulo
@@ -171,3 +171,33 @@ class ArticuloDelete(DeleteView, LoginRequiredMixin):
     
 def formulario_buscar(request):
     return render(request, "blogApp/buscar_general.html")
+
+##########################################################
+# EDITAR - BORAR - ACTUALIZAR autor
+##########################################################
+class AutorList(ListView, LoginRequiredMixin):
+    model = Autor
+    template_name = "blogApp/autor_list.html"
+
+
+class AutorDetalle(DetailView, LoginRequiredMixin):
+    model = Autor
+    template_name = "blogApp/autor_detalle.html"
+
+
+class AutorCreacion(CreateView, LoginRequiredMixin):
+    model = Articulo
+    fields = ["nombre", "alias", "profesion"]
+    success_url = "/blogApp/Autor/list"
+
+
+class AutorUpdateView(UpdateView, LoginRequiredMixin):
+    model = Autor
+    success_url = "/blogApp/autor_list"
+    fields = ["nombre", "alias", "profesion"]
+
+
+class AutorDelete(DeleteView, LoginRequiredMixin):
+
+    model = Autor
+    success_url = "/blogApp/autor_list"
